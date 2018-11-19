@@ -11,3 +11,6 @@
 // about supported directives.
 //
 //= require rails-ujs
+//
+//= require Chart.bundle
+//= require chartkick

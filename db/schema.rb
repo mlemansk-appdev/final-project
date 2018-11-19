@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(version: 20181115190915) do
   create_table "loan_details", force: :cascade do |t|
     t.integer "current_balance"
     t.integer "original_amount"
-    t.float "interest_rate"
+    t.integer "interest_rate"
     t.integer "periods_in_year"
     t.string "interest_per_month"
     t.integer "monthly_min_payment"

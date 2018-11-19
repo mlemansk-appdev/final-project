@@ -84,6 +84,7 @@
   </div>
 </div>
 
+  <%= line_chart [{name: "Balance", data: @pmt_schedule.map{|t| [t[0], t[1] ] }} , {name: "Adj Balance", data: @pmt_schedule_adj.map{|t| [t[0], t[1] ] }}]%>
 
 <div class="row mb-3">
   <div class="col-md-12">
