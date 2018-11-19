@@ -1,0 +1,106 @@
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      All loan details
+    </h1>
+
+    <a href="/loan_details/new" class="btn btn-block btn-outline-secondary">
+      Add a new loan detail
+    </a>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Current balance
+        </th>
+
+        <th>
+          Original amount
+        </th>
+
+        <th>
+          Interest rate
+        </th>
+
+        <th>
+          Periods in year
+        </th>
+
+        <th>
+          Interest per month
+        </th>
+
+        <th>
+          Monthly min payment
+        </th>
+
+        <th>
+          Created at
+        </th>
+
+        <th>
+          Updated at
+        </th>
+
+        <th>
+        </th>
+      </tr>
+
+      <% @loan_details.each do |loan_detail| %>
+      <tr>
+        <td>
+          <%= loan_detail.id %>
+        </td>
+
+        <td>
+          <%= loan_detail.current_balance %>
+        </td>
+
+        <td>
+          <%= loan_detail.original_amount %>
+        </td>
+
+        <td>
+          <%= loan_detail.interest_rate %>
+        </td>
+
+        <td>
+          <%= loan_detail.periods_in_year %>
+        </td>
+
+        <td>
+          <%= loan_detail.interest_per_month %>
+        </td>
+
+        <td>
+          <%= loan_detail.monthly_min_payment %>
+        </td>
+
+        <td>
+          <%= time_ago_in_words(loan_detail.created_at) %> ago
+        </td>
+        <td>
+          <%= time_ago_in_words(loan_detail.updated_at) %> ago
+        </td>
+
+        <td>
+          <a href="/loan_details/<%= loan_detail.id %>">
+            Show details
+          </a>
+        </td>
+      </tr>
+      <% end %>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,66 @@
+<h1>
+  Edit loan detail #<%= @loan_detail.id %>
+</h1>
+
+<hr>
+
+<form action="/update_loan_detail/<%= @loan_detail.id %>" method="post">
+
+  <div class="form-group">
+    <label for="current_balance">
+      Current balance
+    </label>
+
+    <input type="text" id="current_balance" name="current_balance" class="form-control" value="<%= @loan_detail.current_balance %>">
+  </div>
+
+  <div class="form-group">
+    <label for="original_amount">
+      Original amount
+    </label>
+
+    <input type="text" id="original_amount" name="original_amount" class="form-control" value="<%= @loan_detail.original_amount %>">
+  </div>
+
+  <div class="form-group">
+    <label for="interest_rate">
+      Interest rate
+    </label>
+
+    <input type="text" id="interest_rate" name="interest_rate" class="form-control" value="<%= @loan_detail.interest_rate %>">
+  </div>
+
+  <div class="form-group">
+    <label for="periods_in_year">
+      Periods in year
+    </label>
+
+    <input type="text" id="periods_in_year" name="periods_in_year" class="form-control" value="<%= @loan_detail.periods_in_year %>">
+  </div>
+
+  <div class="form-group">
+    <label for="interest_per_month">
+      Interest per month
+    </label>
+
+    <input type="text" id="interest_per_month" name="interest_per_month" class="form-control" value="<%= @loan_detail.interest_per_month %>">
+  </div>
+
+  <div class="form-group">
+    <label for="monthly_min_payment">
+      Monthly min payment
+    </label>
+
+    <input type="text" id="monthly_min_payment" name="monthly_min_payment" class="form-control" value="<%= @loan_detail.monthly_min_payment %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update loan detail
+  </button>
+</form>
+
+<hr>
+
+<a href="/loan_details">
+  Go back
+</a>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221161615) do
+ActiveRecord::Schema.define(version: 20181115190915) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -41,6 +41,17 @@ ActiveRecord::Schema.define(version: 20180221161615) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "loan_details", force: :cascade do |t|
+    t.integer "current_balance"
+    t.integer "original_amount"
+    t.float "interest_rate"
+    t.integer "periods_in_year"
+    t.string "interest_per_month"
+    t.integer "monthly_min_payment"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

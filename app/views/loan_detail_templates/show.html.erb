@@ -1,0 +1,190 @@
+<div class="row mb-3">
+  <div class="col-md-8 offset-md-2">
+    <h1>
+      Loan detail #<%= @loan_detail.id %> details
+    </h1>
+
+    <div class="row mb-3">
+      <div class="col">
+        <a href="/loan_details" class="btn btn-block btn-outline-secondary">
+          Go back
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/loan_details/<%= @loan_detail.id %>/edit" class="btn btn-block btn-outline-secondary">
+          Edit loan detail
+        </a>
+      </div>
+
+      <div class="col">
+        <a href="/delete_loan_detail/<%= @loan_detail.id %>" class="btn btn-block btn-outline-secondary">
+          Delete loan detail
+        </a>
+      </div>
+    </div>
+
+    <dl>
+      <dt>
+        Current balance
+      </dt>
+      <dd>
+        <%= @loan_detail.current_balance %>
+      </dd>
+
+      <dt>
+        Original amount
+      </dt>
+      <dd>
+        <%= @loan_detail.original_amount %>
+      </dd>
+
+      <dt>
+        Interest rate
+      </dt>
+      <dd>
+        <%= @loan_detail.interest_rate %>
+      </dd>
+
+      <dt>
+        Periods in year
+      </dt>
+      <dd>
+        <%= @loan_detail.periods_in_year %>
+      </dd>
+
+      <dt>
+        Interest per month
+      </dt>
+      <dd>
+        <%= @loan_detail.interest_per_month %>
+      </dd>
+
+      <dt>
+        Monthly min payment
+      </dt>
+      <dd>
+        <%= @loan_detail.monthly_min_payment %>
+      </dd>
+
+      <dt>
+        Created at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@loan_detail.created_at) %> ago
+      </dd>
+
+      <dt>
+        Updated at
+      </dt>
+      <dd>
+        <%= time_ago_in_words(@loan_detail.updated_at) %> ago
+      </dd>
+    </dl>
+  </div>
+</div>
+
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <h1>
+      Loan Schedule
+    </h1>
+  </div>
+</div>
+
+
+<hr>
+
+<div class="row mb-3">
+  <div class="col-md-12">
+    <table class="table">
+      <tr>
+        <th>
+          ID
+        </th>
+
+        <th>
+          Payment No.
+        </th>
+
+        <th>
+          Beginning Balance
+        </th>
+
+        <th>
+          Scheduled Payment
+        </th>
+
+        <th>
+          Adjusted Payment
+        </th>
+
+        <th>
+          Interest
+        </th>
+
+        <th>
+          Ending Balance
+        </th>
+
+        <th>
+          Cumulative Interest
+        </th>
+
+        <th>
+          Adj Cumulative Interest
+        </th>
+      </tr>
+
+     <% @pmt_schedule.each do |pmt_no , beg_balance, pmt_amt , principal , interest , end_balance, cum_int| %>
+      <tr>
+        <td>
+          ID
+        </td>
+
+        <td>
+          <%= pmt_no %>
+        </td>
+
+        <td>
+          <%= number_to_currency(beg_balance) %>
+        </td>
+
+        <td>
+          <%= number_to_currency(pmt_amt) %>
+        </td>
+
+        <td>
+          <% if @pmt_schedule_adj[pmt_no - 1].blank? %>
+            <%= number_to_currency(0) %>
+          <% else %>
+            <%= number_to_currency(@pmt_schedule_adj[pmt_no - 1][2]) %>
+          <% end %>
+        </td>
+
+        <td>
+          <%= number_to_currency(interest) %>
+        </td>
+
+        <td>
+          <%= number_to_currency(end_balance) %>
+        </td>
+        <td>
+          <%= number_to_currency(cum_int) %>
+        </td>
+
+        <td>
+          <% if @pmt_schedule_adj[pmt_no - 1].blank? %>
+            <%= number_to_currency(@pmt_schedule_adj[@pmt_schedule_adj.length-1][6]) %>
+          <% else %>
+            <%= number_to_currency(@pmt_schedule_adj[pmt_no - 1][6]) %>
+          <% end %>
+        </td>
+        
+      </tr>
+    <% end %>
+    
+    </table>
+  </div>
+</div>
